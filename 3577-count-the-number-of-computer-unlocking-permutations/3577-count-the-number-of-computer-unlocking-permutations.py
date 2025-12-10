@@ -10,6 +10,6 @@ class Solution(object):
             while n!=1:
                 n-=1
                 c*=n
-            return c
+            return c%(10**9+7)
         return 0
         
