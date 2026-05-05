@@ -17,16 +17,18 @@ class Solution(object):
         if length==k:
             return head
         k=k%length
+        k=length-k
+        k=k%length
         if k==0:
             return head
         
         cur=head
-        for i in range(k):
+        for i in range(k-1):
             cur=cur.next
         node=cur.next
         cur.next=None
         cur=node
-        while cur and cur.next:
+        while cur.next:
             cur=cur.next
         cur.next=head
         head=node
