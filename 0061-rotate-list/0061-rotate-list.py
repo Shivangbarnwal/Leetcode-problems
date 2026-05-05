@@ -8,30 +8,26 @@ class Solution(object):
     
     def rotateRight(self, head, k):
         if not head or k==0:
-            return head 
-
-
-        current=head
+            return head
         length=0
-        while current:
+        cur=head
+        while cur:
             length+=1
-            current=current.next
-        if k==length:
+            cur=cur.next
+        if length==k:
             return head
         k=k%length
-        
         if k==0:
             return head
-
+        
+        cur=head
         for i in range(k):
-            cur=head
-            pre=cur
-            while cur.next!=None:
-                pre=cur
-                cur=cur.next
-
-            pre.next=None
-            cur.next=head
-            head=cur
+            cur=cur.next
+        node=cur.next
+        cur.next=None
+        cur=node
+        while cur and cur.next:
+            cur=cur.next
+        cur.next=head
+        head=node
         return head
-            
