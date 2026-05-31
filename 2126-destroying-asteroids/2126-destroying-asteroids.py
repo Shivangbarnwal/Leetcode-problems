@@ -6,11 +6,8 @@ class Solution(object):
         :rtype: bool
         """
         asteroids.sort()
-        pref=[mass]
         for i in asteroids:
-            p=pref[-1]
-            if p>=i:
-                pref.append(p+i)
-            else:
+            if mass<i:
                 return False
+            mass+=i
         return True
