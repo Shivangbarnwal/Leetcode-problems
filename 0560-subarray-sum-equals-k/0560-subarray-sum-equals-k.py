@@ -2,15 +2,13 @@ from collections import defaultdict
 class Solution(object):
     def subarraySum(self, arr, k):
         mpp=defaultdict(int)
-        count=0
-        n=len(arr)
-        cursum=0
+        presum=0
         mpp[0]=1
-        for i in range(n):
-            cursum+=arr[i]
+        cnt=0
+        for i in arr:
+            presum+=i
             
-            remove=cursum-k
-            count+=mpp[remove]
-            mpp[cursum]+=1
-        return count
-
+            remove=presum-k
+            cnt+=mpp[remove]
+            mpp[presum]+=1
+        return cnt
