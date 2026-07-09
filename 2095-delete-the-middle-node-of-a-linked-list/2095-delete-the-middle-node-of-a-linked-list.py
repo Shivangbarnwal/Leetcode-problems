@@ -6,7 +6,7 @@
 class Solution(object):
     def deleteMiddle(self, head):
         if not head.next:
-            return
+            return None
         slow=head
         fast=head.next
         while fast.next:
