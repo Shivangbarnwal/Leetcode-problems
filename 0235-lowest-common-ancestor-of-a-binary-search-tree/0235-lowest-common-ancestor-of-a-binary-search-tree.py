@@ -10,6 +10,10 @@ class Solution:
         def check(node):
             if not node or node==p or node==q:
                 return node
+            if p.val<node.val and q.val<node.val:
+                return check(node.left) 
+            if p.val>node.val and q.val>node.val:
+                return check(node.right) 
             left=check(node.left)
             right=check(node.right)
             if not left:
