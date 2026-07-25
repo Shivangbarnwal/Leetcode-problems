@@ -14,11 +14,6 @@ class Solution:
                 return check(node.left) 
             if p.val>node.val and q.val>node.val:
                 return check(node.right) 
-            left=check(node.left)
-            right=check(node.right)
-            if not left:
-                return right
-            elif not right:
-                return left
+            
             return node
         return check(root)
