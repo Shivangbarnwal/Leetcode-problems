@@ -1,10 +1,13 @@
-class Solution(object):
-    def rob(self, nums):
+class Solution:
+    def rob(self, nums: List[int]) -> int:
         n=len(nums)
-        pre2=0
-        pre1=nums[0]
-        for i in range(1,n):
-            cur=max(nums[i]+pre2,pre1)
-            pre2=pre1
-            pre1=cur
-        return pre1
+        dp=[-1]*(n+1)
+        dp[0]=0
+        def iter(n):
+            if dp[n]!=-1:
+                return dp[n]
+            if n<0:
+                return 0
+            dp[n]=max(iter(n-1),iter(n-2)+nums[n-1])
+            return dp[n]
+        return iter(len(nums))
