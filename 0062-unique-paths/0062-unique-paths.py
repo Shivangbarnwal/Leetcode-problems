@@ -5,15 +5,13 @@ class Solution:
         for i in range(m):
             dp[i][0]=1
         
-        def iter(m,n):
-            if dp[m][n]!=-1:
-                return dp[m][n]
-            left,top=0,0
-            if m>0:
-                top=iter(m-1,n)
-            if n>0:
-                left=iter(m,n-1)
-            dp[m][n]=left+top
-            return dp[m][n]
-        return iter(m-1,n-1)
+        for i in range(1,m):
+            for j in range(1,n):
+                left,top=0,0
+                if i>0:
+                    top=dp[i-1][j]
+                if j>0:
+                    left=dp[i][j-1]
+                dp[i][j]=left+top
+        return dp[-1][-1]
         
