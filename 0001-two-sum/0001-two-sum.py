@@ -5,10 +5,9 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        n=len(nums)
         mpp={}
-        for i in range(n):
-            if nums[i] in mpp.keys():
-                return i,mpp[nums[i]]
-            mpp[target-nums[i]]=i
-        
+        for i in range(len(nums)):
+            if target-nums[i] not in mpp:
+                mpp[nums[i]]=i
+            else:
+                return [mpp[target-nums[i]],i]
