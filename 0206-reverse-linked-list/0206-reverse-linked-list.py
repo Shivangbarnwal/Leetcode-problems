@@ -8,8 +8,9 @@ class Solution:
         prev=None
         cur=head
         while cur:
-            n=cur.next
+            new=cur.next
             cur.next=prev
             prev=cur
-            cur=n
+            cur=new
         return prev
+            
